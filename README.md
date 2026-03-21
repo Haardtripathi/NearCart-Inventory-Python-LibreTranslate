@@ -31,7 +31,7 @@ cd /home/kakarot/Projects/NearCart-App/NearCart-Inventory/python/libretranslate
 ```
 
 LibreTranslate stays local because it listens on `127.0.0.1:5000`.
-It also loads only `en`, `hi`, and `gu`.
+It also loads only `en` and `hi`.
 
 If LibreTranslate is already running, stop it first with `Ctrl + C`, then start it again.
 
@@ -61,16 +61,6 @@ curl -sS -X POST http://127.0.0.1:5000/translate \
   --data-urlencode "q=Tomato" \
   --data "source=auto" \
   --data "target=hi"
-```
-
-Translate `Tomato` to Gujarati:
-
-```bash
-curl -sS -X POST http://127.0.0.1:5000/translate \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  --data-urlencode "q=Tomato" \
-  --data "source=auto" \
-  --data "target=gu"
 ```
 
 ## Backend connection
@@ -107,8 +97,7 @@ Expected response shape:
 ```json
 {
   "en": "Tomato",
-  "hi": "टमाटर",
-  "gu": "ટામેટા"
+  "hi": "टमाटर"
 }
 ```
 
@@ -172,4 +161,3 @@ source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ./start-local.sh
-# NearCart-Inventory-Python-LibreTranslate
