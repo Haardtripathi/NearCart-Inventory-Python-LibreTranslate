@@ -6,7 +6,34 @@ This folder is only for the local Python translation server.
 
 - `requirements.txt` installs LibreTranslate in a Python virtual environment.
 - `start-local.sh` starts LibreTranslate on `127.0.0.1:5000` only.
+- `start-render.sh` starts LibreTranslate for Render on `0.0.0.0:$PORT`.
 - `.gitignore` ignores the local virtual environment.
+
+## Deploy on Render (Web Service)
+
+Use `python/libretranslate` as the Root Directory.
+
+Build Command:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+chmod +x start-render.sh
+```
+
+Start Command:
+
+```bash
+./start-render.sh
+```
+
+Notes:
+
+- Render must see a process listening on `$PORT` and `0.0.0.0`.
+- If you see `Port scan timeout reached`, your process usually did not bind in time.
+- `start-render.sh` is configured to bind immediately to Render's host and port values.
 
 ## Ubuntu install commands
 

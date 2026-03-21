@@ -1,1 +1,2 @@
-libretranslate
+libretranslate==1.9.5
+chardet<6
