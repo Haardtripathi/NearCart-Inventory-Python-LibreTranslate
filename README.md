@@ -180,11 +180,17 @@ curl -sS -X POST http://127.0.0.1:5000/translate \
 
 If LibreTranslate works directly but the backend route fails, restart the backend so it reloads the new env values.
 
+## Starting this alongside the backend
 
+`npm run dev` in `backend/` does **not** start LibreTranslate automatically - they are two
+separate processes you run in two terminals. From `backend/` you can use:
 
-cd /home/kakarot/Projects/NearCart-App/NearCart-Inventory/python/libretranslate
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-./start-local.sh
+```bash
+npm run translate:start   # equivalent to running ./start-local.sh from this folder
+npm run translate:check   # quick reachability check
+```
+
+You don't strictly have to run this for everyday backend development: every write path falls back
+to storing/returning the original text when LibreTranslate is unreachable (see
+`backend/README.md`). You only need it running to see real machine-translated output from
+`POST /api/translate-item` or from `AUTO_TRANSLATE_ON_WRITE=true`.
